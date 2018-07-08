@@ -25,7 +25,7 @@ def xavier_weight_init():
             out: tf.Tensor of specified shape sampled from the Xavier distribution.
         """
         epsilon = np.sqrt(6 / np.sum(shape))
-        out = tf.random_uniform(shape, minval=-epsilon, maxval=epsilon, **kwargs)
+        out = tf.random_uniform(shape, minval=-epsilon, maxval=epsilon)
         return out
     # Returns defined initializer function.
     return _xavier_initializer
