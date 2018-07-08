@@ -23,8 +23,8 @@ def softmax(x):
                   tensor in this problem.
     """
 
-    ### YOUR CODE HERE
-    ### END YOUR CODE
+    exp_x = tf.exp(x)
+    out = exp_x / tf.reduce_sum(exp_x, 1)
 
     return out
 
