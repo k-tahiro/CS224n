@@ -53,8 +53,7 @@ def cross_entropy_loss(y, yhat):
                     tensor in the problem.
     """
 
-    ### YOUR CODE HERE
-    ### END YOUR CODE
+    out = -tf.reduce_sum(tf.to_float(y) * tf.log(yhat))
 
     return out
 
