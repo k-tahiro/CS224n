@@ -20,8 +20,9 @@ class PartialParse(object):
         # The sentence being parsed is kept for bookkeeping purposes. Do not use it in your code.
         self.sentence = sentence
 
-        ### YOUR CODE HERE
-        ### END YOUR CODE
+        self.stack = ['ROOT']
+        self.buffer = [word for word in sentence]
+        self.dependencies = []
 
     def parse_step(self, transition):
         """Performs a single parse step by applying the given transition to this partial parse
@@ -31,8 +32,12 @@ class PartialParse(object):
                         and right-arc transitions. You can assume the provided transition is a legal
                         transition.
         """
-        ### YOUR CODE HERE
-        ### END YOUR CODE
+        if transition == 'S':
+            self.stack.append(self.buffer.pop(0))
+        else:
+            head_index, dep_index = (-1, -2) if transition == 'LA' else (-2, -1)
+            self.dependencies.append((self.stack[head_index], self.stack[dep_index]))
+            del self.stack[dep_index]
 
     def parse(self, transitions):
         """Applies the provided transitions to this PartialParse
